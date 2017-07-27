@@ -9,7 +9,6 @@
                 <th>Id</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Author</th>
                 <th>Date</th>
                 <th>Published</th>
                 <th>Price</th>
@@ -24,7 +23,6 @@
                 <td><a href="{{ path('advert_show', { 'id': advert.id }) }}">{{ advert.id }}</a></td>
                 <td>{{ advert.title }}</td>
                 <td>{{ advert.description }}</td>
-                <td>{{ advert.author }}</td>
                 <td>{% if advert.date %}{{ advert.date|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if advert.published %}Yes{% else %}No{% endif %}</td>
                 <td>{{ advert.price }}</td>

@@ -18,10 +18,6 @@
                 <td>{{ advert.description }}</td>
             </tr>
             <tr>
-                <th>Author</th>
-                <td>{{ advert.author }}</td>
-            </tr>
-            <tr>
                 <th>Date</th>
                 <td>{% if advert.date %}{{ advert.date|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>

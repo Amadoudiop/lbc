@@ -45,9 +45,9 @@ class AdvertType extends AbstractType
                     //'prototype_data' => 'New Tag Placeholder',
                     'entry_options' => [
                         //'attr' => ['class' => 'file-box'],
-                        /*'constraints' => [
-                            new File(['maxSize' => '10k']),
-                        ],*/
+                        //'constraints' => [
+                        //    new File(['maxSize' => '10k']),
+                        //],
                     ],
                 ])
                 ->add('address');

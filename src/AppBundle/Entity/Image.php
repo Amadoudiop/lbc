@@ -37,6 +37,12 @@ class Image
 
 
     /**
+     * @ORM\ManyToOne(targetEntity="Advert", inversedBy="images")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     */
+    private $advert;
+
+    /**
      * Get id
      *
      * @return int
@@ -92,5 +98,29 @@ class Image
     public function getAlt()
     {
         return $this->alt;
+    }
+
+    /**
+     * Set advert
+     *
+     * @param \AppBundle\Entity\Advert $advert
+     *
+     * @return Image
+     */
+    public function setAdvert(\AppBundle\Entity\Advert $advert = null)
+    {
+        $this->advert = $advert;
+
+        return $this;
+    }
+
+    /**
+     * Get advert
+     *
+     * @return \AppBundle\Entity\Advert
+     */
+    public function getAdvert()
+    {
+        return $this->advert;
     }
 }

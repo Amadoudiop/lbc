@@ -72,15 +72,54 @@ class Advert
     private $address;
 
     /**
-     *
      * @ORM\ManyToOne(targetEntity="Category")
      */
     private $category;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="images"))
+     */
+    private $images;
 
   
     public function __construct()
     {
         $this->date = new \Datetime();
+        $this->images = new ArrayCollection();
+    }
+
+    /**
+     * Add image
+     *
+     * @param \AppBundle\Entity\Emailaddress $image
+     *
+     */
+    public function addImage(Image $image)
+    {
+        $this->images[] = $image;
+        //$image->setPerson($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param Image $image
+     */
+    public function removeImage(Image $image)
+    {
+        $this->images->removeElement($image);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 
     /**
@@ -260,5 +299,28 @@ class Advert
     {
         return $this->address;
     }
-}
 
+    /**
+     * Set category
+     *
+     * @param \AppBundle\Entity\Category $category
+     *
+     * @return Advert
+     */
+    public function setCategory(\AppBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \AppBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+}

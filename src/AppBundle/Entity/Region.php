@@ -3,14 +3,15 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Category
+ * Region
  *
- * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
+ * @ORM\Table(name="region")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\RegionRepository")
  */
-class Category
+class Region
 {
     /**
      * @var int
@@ -44,7 +45,7 @@ class Category
      *
      * @param string $name
      *
-     * @return Category
+     * @return Region
      */
     public function setName($name)
     {

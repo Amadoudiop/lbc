@@ -77,7 +77,7 @@ class Advert
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="Image")
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="images"))
      */
     private $images;
 

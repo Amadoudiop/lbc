@@ -1,0 +1,107 @@
+<?php
+// src/AppBundle/Entity/User.php
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="fos_user")
+ */
+class User extends BaseUser
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
+     */
+    private $lastname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
+     */
+    private $firstname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="department", type="string", length=255)
+     */
+    private $department;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=255)
+     */
+    private $city;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=255)
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=255)
+     */
+    private $phone;
+
+    /**
+     * @var date
+     *
+     * @ORM\Column(name="birthday", type="date", length=255)
+     */
+    private $birthday;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Region")
+     */
+    private $region;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="SocioprofessionalGroup")
+     */
+    private $socioprofessionalGroup;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Interest", cascade={"persist"})
+     */
+    private $interests;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->interests = new ArrayCollection();
+        // your own logic
+    }
+}
+/*
+Civilité :
+//Nom :
+//Prénom :
+//Pseudonyme :
+//Catégorie Socioprofessionnelle :
+//Centres d'intérêt :
+//Région :
+//Département :
+//Adresse :
+//Ville :
+//Téléphone :
+//Date de naissance :
+*/

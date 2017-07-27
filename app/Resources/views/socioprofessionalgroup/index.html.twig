@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Socioprofessionalgroups list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for socioprofessionalGroup in socioprofessionalGroups %}
+            <tr>
+                <td><a href="{{ path('socioprofessionalgroup_show', { 'id': socioprofessionalGroup.id }) }}">{{ socioprofessionalGroup.id }}</a></td>
+                <td>{{ socioprofessionalGroup.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('socioprofessionalgroup_show', { 'id': socioprofessionalGroup.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('socioprofessionalgroup_edit', { 'id': socioprofessionalGroup.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('socioprofessionalgroup_new') }}">Create a new socioprofessionalGroup</a>
+        </li>
+    </ul>
+{% endblock %}
