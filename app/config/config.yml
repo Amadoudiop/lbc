@@ -77,3 +77,8 @@ fos_user:
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
+#
+services:
+    AppBundle\Service\CreemsonFileUploader:
+        arguments:
+            $targetDir: '%advert_directory%'

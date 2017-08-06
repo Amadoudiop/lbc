@@ -58,18 +58,9 @@ class Advert
     private $price;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="city", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="City")
      */
     private $city;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="address", type="string", length=255)
-     */
-    private $address;
 
     /**
      * @ORM\ManyToOne(targetEntity="Category")
@@ -77,7 +68,7 @@ class Advert
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="images"))
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="advert", cascade={"persist"})
      */
     private $images;
 
@@ -274,30 +265,6 @@ class Advert
     public function getCity()
     {
         return $this->city;
-    }
-
-    /**
-     * Set address
-     *
-     * @param string $address
-     *
-     * @return Advert
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return string
-     */
-    public function getAddress()
-    {
-        return $this->address;
     }
 
     /**

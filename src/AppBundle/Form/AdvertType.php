@@ -5,7 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use AppBundle\Entity\Image;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 //use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -32,16 +32,18 @@ class AdvertType extends AbstractType
                 ->add('title')
                 ->add('description')
                 ->add('published')
-                ->add('date', DateType::class, [  
-                    'label' => 'Date de publication'
-
-                ])
                 ->add('price')
-                ->add('city')
+                ->add('city', EntityType::class, [
+                    'class' => 'AppBundle:City',
+                    'choice_label' => 'name',
+                    'attr' => [
+                        'class' => 'form-control'
+                    ]
+                ])
                 ->add('images', CollectionType::class, [
-                    'entry_type'   => FileType::class,
+                    'entry_type'   => ImageType::class,
                     'allow_add' => true,
-                    'prototype' => true,
+                    //'prototype' => true,
                     //'prototype_data' => 'New Tag Placeholder',
                     'entry_options' => [
                         //'attr' => ['class' => 'file-box'],
@@ -50,7 +52,10 @@ class AdvertType extends AbstractType
                         //],
                     ],
                 ])
-                ->add('address');
+                /*->add('images', ImageType::class,[
+                    'data_class' => null
+                    ])*/
+                ;
     }
     
     /**

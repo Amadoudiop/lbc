@@ -14,7 +14,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
 class UserType extends AbstractType
-{
+{   
     /**
      * {@inheritdoc}
      */

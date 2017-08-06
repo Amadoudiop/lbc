@@ -71,16 +71,18 @@ class User extends BaseUser
 
     /**
      * @ORM\ManyToOne(targetEntity="Region")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $region;
 
     /**
      * @ORM\ManyToOne(targetEntity="SocioprofessionalGroup")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $socioprofessionalGroup;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Interest", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Interest")
      */
     private $interests;
 
