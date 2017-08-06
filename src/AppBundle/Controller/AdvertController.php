@@ -10,18 +10,18 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
+//use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Advert controller.
  *
- * @Route("advert")
  */
 class AdvertController extends Controller
 {
     /**
      * Lists all advert entities.
      *
-     * @Route("/", name="advert_index")
+     * @Route("adverts/", name="advert_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -36,9 +36,27 @@ class AdvertController extends Controller
     }
 
     /**
+     * Lists all advert entities.
+     *
+     * @Route("admin/adverts/", name="admin_advert_index")
+     * @Method("GET")
+     */
+    public function advertsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $adverts = $em->getRepository('AppBundle:Advert')->findAll();
+
+        return $this->render('advert/admin/index.html.twig', array(
+            'adverts' => $adverts,
+        ));
+    }
+
+
+    /**
      * Creates a new advert entity.
      *
-     * @Route("/new", name="advert_new")
+     * @Route("advert/new", name="advert_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -48,7 +66,7 @@ class AdvertController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dump($request->files);die;
+            //dump($request->file);die;
             $upload1 = $request->get('first_image');
             $upload2 = $request->get('second_image');
             $upload3 = $request->get('third_image');
@@ -91,7 +109,7 @@ class AdvertController extends Controller
     /**
      * Finds and displays a advert entity.
      *
-     * @Route("/{id}", name="advert_show")
+     * @Route("advert/{id}", name="advert_show")
      * @Method("GET")
      */
     public function showAction(Advert $advert)
@@ -107,7 +125,7 @@ class AdvertController extends Controller
     /**
      * Displays a form to edit an existing advert entity.
      *
-     * @Route("/{id}/edit", name="advert_edit")
+     * @Route("advert/{id}/edit", name="advert_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Advert $advert)
@@ -132,7 +150,7 @@ class AdvertController extends Controller
     /**
      * Deletes a advert entity.
      *
-     * @Route("/{id}", name="advert_delete")
+     * @Route("advert/{id}", name="advert_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Advert $advert)

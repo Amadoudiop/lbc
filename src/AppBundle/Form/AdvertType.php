@@ -31,7 +31,7 @@ class AdvertType extends AbstractType
                 ])
                 ->add('title')
                 ->add('description')
-                ->add('published')
+                //->add('published')
                 ->add('price')
                 ->add('city', EntityType::class, [
                     'class' => 'AppBundle:City',
@@ -43,6 +43,8 @@ class AdvertType extends AbstractType
                 ->add('images', CollectionType::class, [
                     'entry_type'   => ImageType::class,
                     'allow_add' => true,
+                                        'data_class' => null,
+
                     //'prototype' => true,
                     //'prototype_data' => 'New Tag Placeholder',
                     'entry_options' => [
