@@ -37,35 +37,34 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="department", type="string", length=255)
+     * @ORM\Column(name="department", type="string", length=255, nullable=true)
      */
     private $department;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="city", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="City")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $city;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="string", length=255)
+     * @ORM\Column(name="address", type="string", length=255, nullable=true)
      */
     private $address;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=255)
+     * @ORM\Column(name="phone", type="string", length=255, nullable=true)
      */
     private $phone;
 
     /**
      * @var date
      *
-     * @ORM\Column(name="birthday", type="date", length=255)
+     * @ORM\Column(name="birthday", type="date", length=255, nullable=true)
      */
     private $birthday;
 

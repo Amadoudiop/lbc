@@ -21,7 +21,7 @@ class AdvertController extends Controller
     /**
      * Lists all advert entities.
      *
-     * @Route("adverts/", name="advert_index")
+     * @Route("adverts/", name="admin_advert_index")
      * @Method("GET")
      */
     public function indexAction()
